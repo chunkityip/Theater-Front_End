@@ -4,13 +4,12 @@ import { MovieShowing } from '../movieshowing';
 import { CommonModule } from '@angular/common';
 import { DataDisplayComponent } from '../data-display/data-display.component';
 import { TouchSliderComponent } from '../touch-slider/touch-slider.component';
-import { HammerModule } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MovieShowingComponent,HammerModule, CommonModule, DataDisplayComponent, TouchSliderComponent],
+  imports: [MovieShowingComponent, CommonModule, DataDisplayComponent, TouchSliderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
