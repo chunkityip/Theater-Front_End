@@ -42,11 +42,11 @@
 }
 
 .scroll-button.left {
-    left: 300px; /* Position left button */
+    left: 600px; /* Position left button */
 }
 
 .scroll-button.right {
-    right: -100px; /* Position right button */
+    right: -600px; /* Position right button */
 }
 
 .scroll-button:hover {
