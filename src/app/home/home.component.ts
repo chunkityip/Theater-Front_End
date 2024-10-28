@@ -43,5 +43,9 @@ export class HomeComponent {
       imgSrc: 'https://static.vecteezy.com/system/resources/thumbnails/003/582/701/small/coming-soon-background-illustration-template-design-free-vector.jpg',
       imgAlt: 'Image 2',
     },
+    {
+      imgSrc: 'https://static.vecteezy.com/system/resources/thumbnails/003/582/701/small/coming-soon-background-illustration-template-design-free-vector.jpg',
+      imgAlt: 'Image 3',
+    },
   ]
 }

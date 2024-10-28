@@ -8,8 +8,24 @@ h1{
     }
 
 .home-page {
+    width: 100vw;
     margin: 20px;
-    margin-top: 200px;
+    margin-top: 900px;
+
+    .movie-banner {
+    margin-top: 150px;
+    width: 100vw;
+    overflow: hidden; /* Optional: to hide overflow if the image doesn't fit perfectly */
+    }
+
+    .movie-banner img {
+    width: 60vw; /* Stretch the image to fit the width of the parent */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove bottom space/gap */
+    }
+
+
+
 }
 
 .feature-movies {
@@ -17,18 +33,12 @@ h1{
     display: flex;
 }
 
+
+
 :host{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 55vh;
-    background-color: black;
-
-    .slider {
-        margin-top: 650px;
-        width: 900px;
-        height: 400px;
-
-    }
 }
