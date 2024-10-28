@@ -6,6 +6,7 @@ import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { SeatSelectionComponent } from './seat/seat.component';
+import { MovieSelectionComponent } from './movie-selection/movie-selection.component';
 
 export const routes: Routes = [
   /**PUBLIC ROUTES */
@@ -13,6 +14,7 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'cart', component: CartComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'movies', component: MovieSelectionComponent},
 
 
   /**ADMIN ROUTES */
