@@ -1,0 +1,11 @@
+<div class="movie-carousel">
+    <button class="scroll-button left" (click)="scrollLeft()">◀</button>
+        <ul class="movie-list" #movieList>
+            <li *ngFor="let post of data">
+                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/football%2Csoccer%2Csport%2Cevent-design-template-31189bebe42fe7f743327895731b60ae_screen.jpg?ts=1698356519" height="40%">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.description }}</p>
+            </li>
+        </ul>
+    <button class="scroll-button right" (click)="scrollRight()">▶</button>
+</div>

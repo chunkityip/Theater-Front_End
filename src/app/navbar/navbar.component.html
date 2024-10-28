@@ -1,15 +1,26 @@
 <nav>
   <a routerLink="/">LOGO</a>
-  <div>
+
+  <div *ngIf="!isAdminLoggedIn">
+    <!-- Show this section when no admin is logged in (public navigation) -->
     <button (click)="handleSearchSubmit()">See a Movie</button>
     <button (click)="handleSearchSubmit()">Find Theater</button>
     <button (click)="handleSearchSubmit()">Bundles</button>
   </div>
-  <div>
+
+  <div *ngIf="!isAdminLoggedIn">
+    <!-- Show these buttons when no admin is logged in -->
     <button (click)="handleLogin()">Sign In</button>
     <button (click)="handleRegister()">Join Now</button>
+    <button routerLink="/cart">Cart</button>
+  </div>
+
+  <div *ngIf="isAdminLoggedIn">
+    <!-- Show this section only when admin is logged in -->
+    <button (click)="handleLogout()">Logout</button>
   </div>
 </nav>
+
 
 
 

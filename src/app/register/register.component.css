@@ -56,11 +56,6 @@ button:active {
   transform: translateY(4px);
 }
 
-.message {
-  text-align: center;
-  color: #f61e3e;
-}
-
 .register-link{
   margin-top: 20px;
   font-size: 14px;
@@ -86,7 +81,7 @@ a{
 }
 
 /* Add a fade-out effect */
-.message.fade-out {
+.fade-out {
   opacity: 0;
 }
 
