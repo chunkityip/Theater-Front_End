@@ -24,7 +24,7 @@ export class RegisterComponent {
 
   async handleSubmit() {
     if (!this.formData.name) {
-      this.showMessage("Field required")
+      this.showMessage("Field required");
       return;
     }
 
@@ -32,12 +32,12 @@ export class RegisterComponent {
       // Call your registration API here (assuming async for now)
       await firstValueFrom(this.apiService.registerUser(this.formData));
 
-      this.showMessage(`User successfully registered. Username will be {${this.formData.name}}`);
+      window.alert(`User successfully registered. Username will be " ${this.formData.name} "`);
 
       // Navigate to login after a short delay to allow the user to read the message
       setTimeout(() => {
         this.router.navigate(['/login']);
-      }, 2000);
+      });
 
     } catch (error: any) {
       console.log(error);
@@ -55,12 +55,7 @@ export class RegisterComponent {
       if (messageElement) {
         messageElement.classList.add('fade-out');
       }
-    }, 2500); // Start fading out after 2.5 seconds
-
-    // Remove the message after the animation
-    setTimeout(() => {
-      this.message = null;
-    }, 5000);
+    });
   }
 
 }

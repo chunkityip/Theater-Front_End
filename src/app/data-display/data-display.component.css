@@ -1,0 +1,54 @@
+.movie-carousel {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    position: relative;  /* Positioning context for buttons */
+    width: 400px; /* Set a fixed width for the carousel */
+    margin: 0 auto; /* Center the carousel in its parent */
+    height: 60vh;
+}
+
+.movie-list-container {
+    overflow: hidden; /* Hide overflow to avoid blank spaces */
+    width: 100%; /* Use full width of the carousel */
+    flex-shrink: 0; /* Prevent shrinking */
+    display: flex; /* Enable flexbox for centering */
+    justify-content: center; /* Center items horizontally */
+}
+
+.movie-list {
+    display: flex;
+    padding: 0;
+    list-style-type: none;
+    scroll-behavior: smooth; /* Smooth scrolling */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.movie-list li {
+    flex: 0 0 auto; /* Prevent flex-grow */
+    margin-right: 190px; /* Space between items */
+    width: 200px; /* Set a fixed width for each movie item */
+}
+
+.scroll-button {
+    position: absolute; /* Position buttons absolutely */
+    top: 60%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for exact center */
+    background-color: rgba(255, 0, 0, 0.8); /* Semi-transparent button color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    padding: 10px; /* Button padding */
+    cursor: pointer; /* Pointer cursor */
+    z-index: 10; /* Ensure buttons are on top */
+}
+
+.scroll-button.left {
+    left: 300px; /* Position left button */
+}
+
+.scroll-button.right {
+    right: -100px; /* Position right button */
+}
+
+.scroll-button:hover {
+    background-color: rgba(0, 100, 200, 0.9); /* Darker color on hover */
+}
