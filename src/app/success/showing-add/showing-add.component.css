@@ -1,0 +1,116 @@
+.page-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+/* Navigation Styles */
+.navigation {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links, .auth-links {
+  display: flex;
+  gap: 20px;
+}
+
+.auth-links span {
+  color: #666;
+}
+
+.navigation a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Content Container Styles */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Success Header Styles */
+.success-header {
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 4px solid #ff4500;
+  border-bottom: 4px solid #ff4500;
+}
+
+.success-icon {
+  background-color: #32cd32;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.success-header h2 {
+  margin: 0;
+  padding-top: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Content Styles */
+.content {
+  padding: 20px;
+}
+
+.movie-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.movie-poster {
+  width: 64px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.movie-info h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Table Styles */
+.showings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.showings-table th {
+  background-color: #ffeeee;
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-weight: normal;
+}
+
+.showings-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  background-color: #fff9e6;
+}
+
+.showings-table tr:nth-child(even) td {
+  background-color: #fffbeb;
+}

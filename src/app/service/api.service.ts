@@ -2,6 +2,13 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+interface Movie {
+  id: number;
+  title: string;
+  description: string;
+  coverImageBase64: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -40,6 +47,15 @@ export class ApiService {
   /** Shopping cart */
   createOrder(orderRequest: any): Observable<any> {
     return this.http.post(`${ApiService.BASE_URL}/order/create`, orderRequest);
+  }
+
+  /** Admin */
+  createMovie(formData: FormData): Observable<any> {
+    return this.http.post(`${ApiService.BASE_URL}/movie/create`, formData);
+  }
+
+  getMovieById(id: number): Observable<Movie> {
+    return this.http.get<Movie>(`${ApiService.BASE_URL}/movie/${id}`);
   }
 }
 

@@ -1,99 +1,135 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-interface SeatType {
-  id: string;
+interface Movie {
+  id: number;
+  name: string;
+  time?: string;
+  theater?: string;
+  duration?: string;
+  showDates: string[];
+  imageUrl: string;
+}
+
+interface SeatState {
   status: 'available' | 'occupied' | 'selected';
+  id: string;
 }
 
 @Component({
   selector: 'app-seat-selection',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './seat.component.html',
   styleUrls: ['./seat.component.css']
 })
 export class SeatSelectionComponent implements OnInit {
-  movieTitle: string = 'Star Wars: The Phantom Menace';
-  selectedDate: string = '';
-  selectedTime: string = '';
-
-  dates = [
-    { value: '10/21', label: '10/21' },
-    { value: '10/22', label: '10/22' },
-    { value: '10/23', label: '10/23' },
-    { value: '10/24', label: '10/24' },
-    { value: '10/25', label: '10/25' }
-  ];
-
-  times = [
-    { value: '2:00 pm', label: '2:00 pm' },
-    { value: '3:00 pm', label: '3:00 pm' },
-    { value: '4:00 pm', label: '4:00 pm' },
-    { value: '6:00 pm', label: '6:00 pm' },
-    { value: '8:00 pm', label: '8:00 pm' }
-  ];
-
-  seatMap: { [key: string]: SeatType[] } = {
-    'A': Array.from({ length: 6 }, (_, i) => ({
-      id: `A${i + 1}`,
-      status: 'available'
-    })),
-    'B': Array.from({ length: 7 }, (_, i) => ({
-      id: `B${i + 1}`,
-      status: 'available'
-    })),
-    'C': Array.from({ length: 8 }, (_, i) => ({
-      id: `C${i + 1}`,
-      status: 'available'
-    })),
-    'D': Array.from({ length: 9 }, (_, i) => ({
-      id: `D${i + 1}`,
-      status: 'available'
-    })),
-    'E': Array.from({ length: 10 }, (_, i) => ({
-      id: `E${i + 1}`,
-      status: 'available'
-    }))
+  selectedMovie: Movie = {
+    id: 1,
+    name: 'Star Wars: The Phantom Menace',
+    theater: 'Theater Name',
+    time: 'Show Time',
+    duration: 'Movie Duration',
+    showDates: ['10/21', '10/22', '10/23', '10/24', '10/25'],
+    imageUrl: 'https://m.media-amazon.com/images/M/MV5BODVhNGIxOGItYWNlMi00YTA0LWI3NTctZmQxZGUwZDEyZWI4XkEyXkFqcGc@._V1_.jpg'
   };
 
-  constructor() {}
+  seatLayout: SeatState[][] = [];
+  showTimes: string[] = ['2:00 pm', '3:00 pm', '4:00 pm', '6:00 pm', '8:00 pm'];
+  selectedDate: string = '10/21';
+  selectedTime: string = '6:00 pm';
+  private isBrowser: boolean;
 
-  ngOnInit(): void {
-    // Set some seats as occupied for demonstration
-    this.setSeatStatus('A3', 'occupied');
-    this.setSeatStatus('B6', 'occupied');
-    this.setSeatStatus('B7', 'occupied');
-    this.setSeatStatus('C3', 'occupied');
-    this.setSeatStatus('D3', 'occupied');
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
-  setSeatStatus(seatId: string, status: 'available' | 'occupied' | 'selected'): void {
-    const row = seatId.charAt(0);
-    const seatIndex = parseInt(seatId.slice(1)) - 1;
-    if (this.seatMap[row] && this.seatMap[row][seatIndex]) {
-      this.seatMap[row][seatIndex].status = status;
+  ngOnInit(): void {
+    this.initializeSeatLayout();
+    if (this.isBrowser) {
+      this.loadSavedData();
     }
   }
 
-  toggleSeatSelection(seat: SeatType): void {
+  private initializeSeatLayout(): void {
+    this.seatLayout = Array(8).fill(null).map((_, rowIndex) =>
+      Array(10).fill(null).map((_, seatIndex) => ({
+        status: Math.random() < 0.3 ? 'occupied' : 'available',
+        id: `${this.getRowLabel(rowIndex)}${seatIndex + 1}`
+      }))
+    );
+  }
+
+  getRowLabel(index: number): string {
+    return String.fromCharCode(65 + index);
+  }
+
+  onSeatClick(rowIndex: number, seatIndex: number): void {
+    const seat = this.seatLayout[rowIndex][seatIndex];
     if (seat.status === 'occupied') return;
+
     seat.status = seat.status === 'selected' ? 'available' : 'selected';
+
+    if (this.isBrowser) {
+      this.saveToLocalStorage();
+    }
   }
 
-  getSelectedSeats(): string[] {
-    const selected: string[] = [];
-    Object.values(this.seatMap).forEach(row => {
-      row.forEach(seat => {
-        if (seat.status === 'selected') {
-          selected.push(seat.id);
-        }
-      });
-    });
-    return selected;
+  selectDate(date: string): void {
+    this.selectedDate = date;
+    this.saveToLocalStorage();
   }
 
-  onContinue(): void {
-    const selectedSeats = this.getSelectedSeats();
+  selectTime(time: string): void {
+    this.selectedTime = time;
+    this.saveToLocalStorage();
+  }
+
+  hasSelectedSeats(): boolean {
+    return this.seatLayout.some(row =>
+      row.some(seat => seat.status === 'selected')
+    );
+  }
+
+  continue(): void {
+    const selectedSeats = this.seatLayout
+      .flatMap(row => row.filter(seat => seat.status === 'selected'))
+      .map(seat => seat.id);
+
     console.log('Selected seats:', selectedSeats);
     console.log('Selected date:', this.selectedDate);
     console.log('Selected time:', this.selectedTime);
+    // Implement checkout logic here
+  }
+
+  private saveToLocalStorage(): void {
+    if (!this.isBrowser) return;
+    try {
+      const dataToSave = {
+        seatLayout: this.seatLayout,
+        selectedDate: this.selectedDate,
+        selectedTime: this.selectedTime
+      };
+      localStorage.setItem('seatSelection', JSON.stringify(dataToSave));
+    } catch (error) {
+      console.error('Error saving to localStorage:', error);
+    }
+  }
+
+  private loadSavedData(): void {
+    if (!this.isBrowser) return;
+    try {
+      const savedData = localStorage.getItem('seatSelection');
+      if (savedData) {
+        const parsed = JSON.parse(savedData);
+        this.seatLayout = parsed.seatLayout;
+        this.selectedDate = parsed.selectedDate;
+        this.selectedTime = parsed.selectedTime;
+      }
+    } catch (error) {
+      console.error('Error loading from localStorage:', error);
+    }
   }
 }
+

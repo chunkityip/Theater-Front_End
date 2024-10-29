@@ -22,10 +22,18 @@
 
 <div class="movies">
     <ul class="movie-list">
-      <li *ngFor="let post of filteredMovies">
-        <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/football%2Csoccer%2Csport%2Cevent-design-template-31189bebe42fe7f743327895731b60ae_screen.jpg?ts=1698356519">
-        <h3>{{post.title}}</h3>
-        <p> {{ post.description }} </p>
+      <li *ngFor="let post of filteredMovies" (click)="fetchMovieDetails(post.id)">
+        <img 
+        *ngIf="post.coverImageBase64; else placeholder" 
+        [src]="post.coverImageBase64" 
+        alt="{{ post.title }}"
+      >
+        <p>{{post.title}}</p>
       </li>
     </ul>
-</div>
+</div> 
+
+
+<ng-template #placeholder>
+    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/football%2Csoccer%2Csport%2Cevent-design-template-31189bebe42fe7f743327895731b60ae_screen.jpg" alt="Default Image">
+</ng-template>
