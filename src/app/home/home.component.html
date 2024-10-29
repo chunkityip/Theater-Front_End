@@ -1,25 +1,105 @@
-<!-- <img src = "https://img.freepik.com/free-vector/bright-yellow-banner-with-halftone-effect_1017-36272.jpg?t=st=1729536650~exp=1729540250~hmac=9f7c9fac4a3eda1baea2707bede5cfb686fdef9b4497cf146aea3a87834d4b24&w=1380" style="width: 100%;"> -->
-<div class="home-page">
-    <!-- <div class="slider">
-    <app-touch-slider [images]="images"></app-touch-slider> 
-    </div> -->
-    <!-- <div class="movie-banner">
-        <div class="overlay"></div>
-        <img src="https://media.npr.org/assets/img/2014/09/28/4dx_interior_img02_wide-bea59d8c5af8b6726e3467c41186ecc66a1c3545.jpg" alt="dummy movie">
-    </div> -->
-
-    <h1>Featured Movies</h1>
-    
-    <div class="feature-movies">
-        
-        <app-data-display></app-data-display>
+<div class="demo-cont">
+  <!-- slider start -->
+  <div class="fnc-slider example-slider">
+    <div class="fnc-slider__slides">
+      <!-- slide start -->
+      <div class="fnc-slide m--blend-green m--active-slide">
+        <div class="fnc-slide__inner">
+          <div class="fnc-slide__mask">
+            <div class="fnc-slide__mask-inner"></div>
+          </div>
+          <div class="fnc-slide__content">
+            <h2 class="fnc-slide__heading">
+              <div class="fnc-slide__heading-line">
+                <span>Black Widow</span>
+              </div>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- slide end -->
+      <!-- slide start -->
+      <div class="fnc-slide m--blend-dark">
+        <div class="fnc-slide__inner">
+          <div class="fnc-slide__mask">
+            <div class="fnc-slide__mask-inner"></div>
+          </div>
+          <div class="fnc-slide__content">
+            <h2 class="fnc-slide__heading">
+              <div class="fnc-slide__heading-line">
+                <span>Captain America: The First Avenger</span>
+              </div>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- slide end -->
+      <!-- slide start -->
+      <div class="fnc-slide m--blend-red">
+        <div class="fnc-slide__inner">
+          <div class="fnc-slide__mask">
+            <div class="fnc-slide__mask-inner"></div>
+          </div>
+          <div class="fnc-slide__content">
+            <h2 class="fnc-slide__heading">
+              <div class="fnc-slide__heading-line">
+                <span>Iron man 2</span>
+              </div>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- slide end -->
+      <!-- slide start -->
+      <div class="fnc-slide m--blend-blue">
+        <div class="fnc-slide__inner">
+          <div class="fnc-slide__mask">
+            <div class="fnc-slide__mask-inner"></div>
+          </div>
+          <div class="fnc-slide__content">
+            <h2 class="fnc-slide__heading">
+              <div class="fnc-slide__heading-line">
+                <span>Thor: The Dark World</span>
+              </div>
+              <div class="fnc-slide__heading-line">
+              </div>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- slide end -->
     </div>
-
+    <nav class="fnc-nav">
+      <div class="fnc-nav__bgs">
+        <div class="fnc-nav__bg m--navbg-green m--active-nav-bg"></div>
+        <div class="fnc-nav__bg m--navbg-dark"></div>
+        <div class="fnc-nav__bg m--navbg-red"></div>
+        <div class="fnc-nav__bg m--navbg-blue"></div>
+      </div>
+    </nav>
+  </div>
+  <!-- slider end -->
+  <div class="demo-cont__credits">
+    <div class="demo-cont__credits-close"></div>
+    <h2 class="demo-cont__credits-heading">Made by</h2>
+    <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/142996/profile/profile-512_5.jpg" alt="" class="demo-cont__credits-img" />
+    <h3 class="demo-cont__credits-name">Nikolay Talanov</h3>
+    <a href="https://codepen.io/suez/" target="_blank" class="demo-cont__credits-link">My codepen</a>
+    <a href="https://twitter.com/NikolayTalanov" target="_blank" class="demo-cont__credits-link">My twitter</a>
+    <h2 class="demo-cont__credits-heading">Based on</h2>
+    <a href="https://dribbble.com/shots/2375246-Fashion-Butique-slider-animation" target="_blank" class="demo-cont__credits-link">Concept by Kreativa Studio</a>
+    <h4 class="demo-cont__credits-blend">Global Blend Mode</h4>
+    <div class="colorful-switch">
+      <input type="checkbox" class="colorful-switch__checkbox js-activate-global-blending" id="colorful-switch-cb" />
+      <label class="colorful-switch__label" for="colorful-switch-cb">
+        <span class="colorful-switch__bg"></span>
+        <span class="colorful-switch__dot"></span>
+        <span class="colorful-switch__on">
+          <span class="colorful-switch__on__inner"></span>
+        </span>
+        <span class="colorful-switch__off"></span>
+      </label>
+    </div>
+  </div>
 </div>
 
-
-<!-- <section class="movie-showings">
-    <app-movie-showing
-        *ngFor="let movieShowing of movieShowingList"
-        [movieShowing]="movieShowing"></app-movie-showing>  
-</section> -->

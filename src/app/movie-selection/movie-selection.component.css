@@ -13,14 +13,19 @@
     padding: 0; /* Remove default padding */
     margin-right: 40px;
     margin-left: 40px;
+    text-align: center;
 }
 
 .movie-list li {
-    margin: 30px 80px; /* Adjust margin as needed */
+    margin: 30px 20px; /* Adjust margin as needed */
     /* Set a max-width if you want to control the size of each item */
     max-width: 200px; /* Example max width for each movie item */
 }
 
 .movie-list img {
-    height: 180px;
+    height: 240px;
+}
+
+.movie-list p {
+    margin-top: 5px;;
 }

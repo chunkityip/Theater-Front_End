@@ -1,63 +1,73 @@
-<!-- seat.component.html -->
-<div class="container">
-  <h2 class="title">Select Seats</h2>
-
-  <div class="movie-info">
-    <img src="path-to-movie-poster.jpg" alt="Movie Poster" class="movie-poster">
-    <div class="movie-details">
-      <h3>{{ movieTitle }}</h3>
-      <p>(Theater Name) | (Show Date) | (Show Time) | (Movie Duration)</p>
+<div class="seat-selection-container">
+  <!-- Movie Header -->
+  <div class="movie-header">
+    <div class="movie-info">
+      <img [src]="selectedMovie.imageUrl" [alt]="selectedMovie.name" class="movie-poster">
+      <div class="movie-details">
+        <h2>{{ selectedMovie.name }}</h2>
+        <p>{{ selectedMovie.theater }} | {{ selectedMovie.time }} | {{ selectedMovie.duration }}</p>
+      </div>
     </div>
   </div>
 
-  <div class="date-selector">
-    <button
-      *ngFor="let date of dates"
-      [class.active]="selectedDate === date.value"
-      (click)="selectedDate = date.value">
-      {{ date.label }}
+  <!-- Date Selection -->
+  <div class="date-selection">
+    <button *ngFor="let date of selectedMovie.showDates"
+            [class.active]="selectedDate === date"
+            (click)="selectDate(date)">
+      {{ date }}
     </button>
   </div>
 
-  <div class="screen">SCREEN</div>
+  <!-- Screen -->
+  <div class="screen-container">
+    <div class="screen">SCREEN</div>
+  </div>
 
+  <!-- Seats -->
   <div class="seating-layout">
-    <div class="row" *ngFor="let row of seatMap | keyvalue">
-      <div class="seat-wrapper" *ngFor="let seat of row.value">
-        <div
-          class="seat"
-          [class.occupied]="seat.status === 'occupied'"
-          [class.selected]="seat.status === 'selected'"
-          (click)="toggleSeatSelection(seat)">
-          {{ seat.id }}
+    <div class="row-identifier" *ngFor="let row of seatLayout; let rowIndex = index">
+      <span class="row-label">{{ getRowLabel(rowIndex) }}</span>
+      <div class="seat-row">
+        <div *ngFor="let seat of row; let seatIndex = index"
+             class="seat"
+             [class.occupied]="seat.status === 'occupied'"
+             [class.selected]="seat.status === 'selected'"
+             (click)="onSeatClick(rowIndex, seatIndex)">
+          <span class="seat-label">{{ seatIndex + 1 }}</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="legend">
+  <!-- Time Selection -->
+  <div class="time-selection">
+    <button *ngFor="let time of showTimes"
+            [class.active]="selectedTime === time"
+            (click)="selectTime(time)">
+      {{ time }}
+    </button>
+  </div>
+
+  <!-- Legend -->
+  <div class="seat-legend">
     <div class="legend-item">
-      <div class="seat-sample available"></div>
+      <div class="seat-demo available"></div>
       <span>Available</span>
     </div>
     <div class="legend-item">
-      <div class="seat-sample occupied"></div>
+      <div class="seat-demo occupied"></div>
       <span>Occupied</span>
     </div>
     <div class="legend-item">
-      <div class="seat-sample selected"></div>
+      <div class="seat-demo selected"></div>
       <span>Selected</span>
     </div>
   </div>
 
-  <div class="time-selector">
-    <button
-      *ngFor="let time of times"
-      [class.active]="selectedTime === time.value"
-      (click)="selectedTime = time.value">
-      {{ time.label }}
-    </button>
-  </div>
-
-  <button class="continue-btn" (click)="onContinue()">Continue</button>
+  <button class="continue-btn"
+          [disabled]="!hasSelectedSeats()"
+          (click)="continue()">
+    Continue
+  </button>
 </div>

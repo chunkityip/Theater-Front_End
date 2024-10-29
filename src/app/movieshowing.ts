@@ -1,6 +1,8 @@
 export interface MovieShowing {
     id: number;
-    name: string;
+    title: string;
     description: string;
-    photo: string;
+    coverImageBase64: string;
 }
+
+
