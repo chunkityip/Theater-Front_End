@@ -1,0 +1,27 @@
+<div class="payment-container">
+  <div class="payment-card">
+    <div class="success-header">
+      <h1>Thanks</h1>
+      <h2>Payment Success</h2>
+      <div class="check-icon">✓</div>
+    </div>
+
+
+
+    <div class="payment-info">
+      <h3>Here is the payment info:</h3>
+      <p class="payment-id">Payment id: {{paymentId}}</p>
+
+      <div class="movie-details">
+        <img [src]="ticket.imageUrl" [alt]="ticket.title" class="movie-poster">
+        <div class="movie-info">
+          <h4>{{ticket.title}}</h4>
+          <p class="details">
+            {{ticket.theaterName}} | {{ticket.showDate}} | {{ticket.showTime}} | {{ticket.duration}}
+          </p>
+          <p class="price">Price: ${{ticket.price}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

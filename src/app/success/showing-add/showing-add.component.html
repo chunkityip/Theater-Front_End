@@ -1,0 +1,32 @@
+  <div class="content-container">
+    <div class="success-header">
+      <div class="success-icon">✓</div>
+      <h2>Showings Added Successfully</h2>
+    </div>
+
+    <div class="content">
+      <p>Here are the showings that were added:</p>
+
+      <div class="movie-info">
+        <img [src]="ticket.imageUrl" [alt]="ticket.title" class="movie-poster">
+        <h3>{{ ticket.title }}</h3>
+      </div>
+
+      <table class="showings-table">
+        <thead>
+        <tr>
+          <th>showing id</th>
+          <th>showing date</th>
+          <th>showing time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let showing of showings">
+          <td>{{ showing.id }}</td>
+          <td>{{ showing.date }}</td>
+          <td>{{ showing.time }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

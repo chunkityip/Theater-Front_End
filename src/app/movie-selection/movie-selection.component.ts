@@ -38,9 +38,19 @@ export class MovieSelectionComponent {
     } else {
       this.filteredMovies = this.data.filter(post => 
         post.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
+      ); 
     }
     console.log('Filtered Movies:', this.filteredMovies); // Debugging line
+  }
+
+  fetchMovieDetails(movieId: number) {
+    this.httpClient.get(`http://localhost:8080/movie/${movieId}`)
+      .subscribe((data: any) => {
+        console.log('Movie details:', data);
+        // Here you can handle the received data, e.g., navigate to a details page or display in a modal
+      }, error => {
+        console.error('Error fetching movie details:', error);
+      });
   }
 
 }

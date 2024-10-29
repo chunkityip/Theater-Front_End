@@ -31,6 +31,10 @@ export class NavbarComponent {
     this.router.navigate(['/home'], { queryParams: { search: this.searchValue } });
   }
 
+  navigateToMovies() {
+    this.router.navigate(['/movies']);
+  }
+
   handleLogin() {
     this.router.navigate(['/login']);
   }

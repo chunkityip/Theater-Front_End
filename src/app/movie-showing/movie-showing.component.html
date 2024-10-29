@@ -1,10 +1,10 @@
 <section class="movies">
     <img
       class="movie-photo"
-      [src]="movieShowing.photo"
-      alt="Exterior photo of {{ movieShowing.name }}"
+      [src]="movieShowing.coverImageBase64"
+      alt="Exterior photo of {{ movieShowing.title }}"
       crossorigin
     />
-    <h2 class="movie-heading">{{ movieShowing.name }}</h2>
+    <h2 class="movie-heading">{{ movieShowing.title }}</h2>
     <p class="movie-description">{{ movieShowing.description}}</p>
   </section>

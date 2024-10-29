@@ -3,7 +3,7 @@
 
   <div *ngIf="!isAdminLoggedIn">
     <!-- Show this section when no admin is logged in (public navigation) -->
-    <button (click)="handleSearchSubmit()">See a Movie</button>
+    <button (click)="navigateToMovies()">See a Movie</button>
     <button (click)="handleSearchSubmit()">Find Theater</button>
     <button (click)="handleSearchSubmit()">Bundles</button>
   </div>
