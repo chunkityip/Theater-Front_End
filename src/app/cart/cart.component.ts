@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../service/cart.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CardPaymentComponent } from "../card-payment/card-payment.component";
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardPaymentComponent],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
