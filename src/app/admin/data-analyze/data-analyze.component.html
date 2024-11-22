@@ -1,0 +1,80 @@
+<div class="dashboard-container">
+  <!-- Summary Section -->
+  <div class="summary-section">
+    <div class="grid-container">
+      <div class="summary-card" *ngFor="let item of summaryData">
+        <div class="icon-container" [ngClass]="item.iconClass">
+          <!-- <i class="material-icons">{{item.icon}}</i> -->
+        </div>
+        <div class="content">
+          <div class="label">{{item.label}}</div>
+          <div class="value">{{item.value}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Grid -->
+  <div class="charts-grid">
+
+    <!-- Daily Average Sales -->
+    <div class="chart-card">
+      <h3>Daily Average Sales</h3>
+      <div class="chart-container">
+        <div class="horizontal-bars">
+          <div *ngFor="let day of dailySalesData" class="h-bar-item">
+            <div class="label">{{day.day}}</div>
+            <div class="bar" [style.width.%]="(day.sales/maxDailySales)*100"></div>
+            <div class="value">${{day.sales | number}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concessions Performance -->
+    <div class="chart-card">
+      <h3>Concessions Performance</h3>
+      <div class="chart-container">
+        <div class="horizontal-bars">
+          <div *ngFor="let item of concessionData" class="h-bar-item">
+            <div class="label">{{item.item}}</div>
+            <div class="bar" [style.width.%]="(item.sales/maxConcessionSales)*100"></div>
+            <div class="value">{{item.sales}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hourly Sales Distribution -->
+    <div class="chart-card">
+      <h3>Yesterday's Hourly Sales</h3>
+      <div class="chart-container">
+        <div class="sales-legend">
+          <div class="legend-item">
+            <div class="legend-dot tickets"></div>
+            <span>Tickets</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot popcorn"></div>
+            <span>Popcorn</span>
+          </div>
+        </div>
+        <div class="line-chart">
+          <div *ngFor="let hour of hourlySalesData" class="time-slot">
+            <div class="time">{{hour.time}}</div>
+            <div class="sales-bars">
+              <div class="bar-group">
+                <div class="bar tickets" [style.height.%]="(hour.tickets/maxHourlyTickets)*100">
+                  <div class="bar-value">{{hour.tickets}}</div>
+                </div>
+                <div class="bar popcorn" [style.height.%]="(hour.popcorn/maxHourlyPopcorn)*100">
+                  <div class="bar-value">{{hour.popcorn}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
